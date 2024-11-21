@@ -1,0 +1,8 @@
+begin
+tr 90
+fd 10
+tl 90
+fr 10
+tr 180
+fr 20
+end
