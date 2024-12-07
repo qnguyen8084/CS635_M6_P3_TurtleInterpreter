@@ -1,6 +1,7 @@
 package TurtleInterpreter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -9,8 +10,16 @@ public class Main {
         TurtleLexerInt lexer = new TurtleLexer(fileName);
         List<String> tokens = lexer.tokenize();
         TurtleParser parser = new TurtleParser(tokens);
-        List<TurtleParser.Command> commands = parser.parse();
-        TurtleInterpreter interpreter = new TurtleInterpreter();
-        interpreter.interpret(commands);
+        List<ASTNode> commands = parser.parse();
+        Turtle turtle = new Turtle();
+        TurtleInterpreter interpreter = new TurtleInterpreter(turtle);
+        List<TurtleMemento> mementos = new ArrayList<>();
+        for (ASTNode command : commands) {
+            TurtleMemento memento = command.accept(interpreter);
+            mementos.add(memento);
+        }
+        for (TurtleMemento memento : mementos) {
+            System.out.println("Memento - X: " + memento.getX() + ", Y: " + memento.getY() + ", Heading: " + memento.getHeading());
+        }
     }
 }

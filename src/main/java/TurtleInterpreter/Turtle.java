@@ -20,10 +20,22 @@ public class Turtle {
     }
 
     public void turnleft(double degrees) {
-        heading = (heading + degrees) % 360;
+        heading = (heading - degrees + 360) % 360;
     }
 
     public void turnright(double degrees) {
-        heading = (heading - degrees) % 360;
+        heading = (heading + degrees) % 360;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getHeading() {
+        return heading;
     }
 }

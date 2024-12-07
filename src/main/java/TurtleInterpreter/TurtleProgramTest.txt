@@ -1,6 +1,6 @@
 fd 10
 tr 90
-fd 20
+fd 30
 tl 90
 fd 100
 tr 90

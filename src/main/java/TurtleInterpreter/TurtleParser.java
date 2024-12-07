@@ -11,23 +11,26 @@ public class TurtleParser {
         this.tokens = tokens;
     }
 
-    public List<Command> parse() {
-        List<Command> commands = new ArrayList<>();
+    public List<ASTNode> parse() {
+        List<ASTNode> commands = new ArrayList<>();
         while (pos < tokens.size()) {
             String command = tokens.get(pos++);
             int value = Integer.parseInt(tokens.get(pos++));
-            commands.add(new Command(command, value));
+            switch (command) {
+                case "fd":
+                    commands.add(new ForwardNode(value));
+                    break;
+                case "bk":
+                    commands.add(new BackwardNode(value));
+                    break;
+                case "tr":
+                    commands.add(new TurnRightNode(value));
+                    break;
+                case "tl":
+                    commands.add(new TurnLeftNode(value));
+                    break;
+            }
         }
         return commands;
-    }
-
-    public static class Command {
-        public final String command;
-        public final int value;
-
-        public Command(String command, int value) {
-            this.command = command;
-            this.value = value;
-        }
     }
 }

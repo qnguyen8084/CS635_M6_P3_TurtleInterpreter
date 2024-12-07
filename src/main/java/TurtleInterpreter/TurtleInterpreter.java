@@ -2,48 +2,43 @@ package TurtleInterpreter;
 
 import java.util.List;
 
-public class TurtleInterpreter {
-    private double x = 0, y = 0;
-    private double heading = 0;
+public class TurtleInterpreter implements ASTVisitor<TurtleMemento> {
+    private final Turtle turtle;
 
-    public void interpret(List<TurtleParser.Command> commands) {
-        for (TurtleParser.Command command : commands) {
-            switch (command.command) {
-                case "fd":
-                    forward(command.value);
-                    break;
-                case "bk":
-                    backward(command.value);
-                    break;
-                case "tr":
-                    turnRight(command.value);
-                    break;
-                case "tl":
-                    turnLeft(command.value);
-                    break;
-            }
+    public TurtleInterpreter(Turtle turtle) {
+        this.turtle = turtle;
+    }
+    public void interpret(List<ASTNode> commands) {
+        for (ASTNode command : commands) {
+            command.accept(this);
         }
     }
 
-    private void forward(int distance) {
-        x += distance * Math.cos(Math.toRadians(heading));
-        y += distance * Math.sin(Math.toRadians(heading));
-        System.out.println("Moved forward " + distance + " to (" + x + ", " + y + ")");
+    @Override
+    public TurtleMemento visit(ForwardNode node) {
+        turtle.forward(node.value);
+        System.out.println("Moved forward to (" + turtle.getX() + ", " + turtle.getY() + ")");
+        return new TurtleMemento(turtle.getX(), turtle.getY(), turtle.getHeading());
     }
 
-    private void backward(int distance) {
-        x -= distance * Math.cos(Math.toRadians(heading));
-        y -= distance * Math.sin(Math.toRadians(heading));
-        System.out.println("Moved backward " + distance + " to (" + x + ", " + y + ")");
+    @Override
+    public TurtleMemento visit(BackwardNode node) {
+        turtle.backward(node.value);
+        System.out.println("Moved backward to (" + turtle.getX() + ", " + turtle.getY() + ")");
+        return new TurtleMemento(turtle.getX(), turtle.getY(), turtle.getHeading());
     }
 
-    private void turnRight(int degrees) {
-        heading = (heading + degrees) % 360;
-        System.out.println("Turned right " + degrees + " degrees to " + heading);
+    @Override
+    public TurtleMemento visit(TurnRightNode node) {
+        turtle.turnright(node.value);
+        System.out.println("Turned right to " + turtle.getHeading() + " degrees");
+        return new TurtleMemento(turtle.getX(), turtle.getY(), turtle.getHeading());
     }
 
-    private void turnLeft(int degrees) {
-        heading = (heading - degrees + 360) % 360;
-        System.out.println("Turned left " + degrees + " degrees to " + heading);
+    @Override
+    public TurtleMemento visit(TurnLeftNode node) {
+        turtle.turnleft(node.value);
+        System.out.println("Turned left to " + turtle.getHeading() + " degrees");
+        return new TurtleMemento(turtle.getX(), turtle.getY(), turtle.getHeading());
     }
 }
