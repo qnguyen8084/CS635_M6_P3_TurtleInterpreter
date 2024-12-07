@@ -14,12 +14,15 @@ public class Main {
         Turtle turtle = new Turtle();
         TurtleInterpreter interpreter = new TurtleInterpreter(turtle);
         List<TurtleMemento> mementos = new ArrayList<>();
+        TurtleDistanceVisitor turtleDistance = new TurtleDistanceVisitor();
         for (ASTNode command : commands) {
             TurtleMemento memento = command.accept(interpreter);
             mementos.add(memento);
+            command.accept(turtleDistance);
         }
         for (TurtleMemento memento : mementos) {
             System.out.println("Memento - X: " + memento.getX() + ", Y: " + memento.getY() + ", Heading: " + memento.getHeading());
         }
+        System.out.println("Total distance traveled: " + turtleDistance.getTotalDistance());
     }
 }
