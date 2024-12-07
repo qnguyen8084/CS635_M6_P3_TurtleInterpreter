@@ -1,8 +1,9 @@
 grammar Turtle;
 
 program: statement+;
-statement: forward | backward | left | right | goto | setHeading;
+statement: turtle | forward | backward | left | right | goto | setHeading;
 
+turtle: 'turtle' INT INT INT;
 forward: 'forward' INT;
 backward: 'backward' INT;
 left: 'left' INT;

@@ -1,4 +1,5 @@
 // Syntax
+// turtle <x> <y> <heading>
 // forward <distance>
 // backward <distance>
 // left <degrees>
@@ -6,6 +7,7 @@
 // goto <x> <y>
 // setHeading <degrees>
 
+turtle 10 10 90
 forward 100
 right 90
 forward 90
@@ -13,7 +15,13 @@ left 90
 backward 50
 forward 50
 goto 0 0
+goto 100 0
+goto 0 0
 setHeading 180
 backward 50
 forward 50
 backward 50
+setHeading 90
+forward 50
+right 180
+forward 50
