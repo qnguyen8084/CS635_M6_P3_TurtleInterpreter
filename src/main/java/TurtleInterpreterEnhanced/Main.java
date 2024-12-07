@@ -1,4 +1,4 @@
-package org.example;
+package TurtleInterpreterEnhanced;
 
 
 import java.io.IOException;
@@ -6,14 +6,14 @@ import java.util.List;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.example.generated.TurtleLexer;
-import org.example.generated.TurtleParser;
+import TurtleInterpreterEnhanced.generated.TurtleLexer;
+import TurtleInterpreterEnhanced.generated.TurtleParser;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         String fileName;
         if (args.length == 0) {
-            fileName = "src/main/java/org/example/turtleProgramFile.txt";
+            fileName = "src/main/java/TurtleInterpreterEnhanced/turtleProgramFile.txt";
         } else {
             fileName = args[0];
         }

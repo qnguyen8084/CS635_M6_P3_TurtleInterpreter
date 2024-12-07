@@ -1,7 +1,7 @@
-package org.example;
+package TurtleInterpreterEnhanced;
 
-import org.example.generated.TurtleBaseVisitor;
-import org.example.generated.TurtleParser;
+import TurtleInterpreterEnhanced.generated.TurtleBaseVisitor;
+import TurtleInterpreterEnhanced.generated.TurtleParser;
 
 import java.util.ArrayList;
 import java.util.List;

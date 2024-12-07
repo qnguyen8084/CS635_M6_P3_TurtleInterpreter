@@ -1,13 +1,10 @@
 // Generated from C:/Users/quy92/OneDrive/Documents/SDSU/2024Fall/CS635/CS635_M6_P3_TurtleInterpreter/src/main/java/org/example/Turtle.g4 by ANTLR 4.13.2
-package org.example.generated;
+package TurtleInterpreterEnhanced.generated;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.List;
-import java.util.Iterator;
-import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
 public class TurtleParser extends Parser {
