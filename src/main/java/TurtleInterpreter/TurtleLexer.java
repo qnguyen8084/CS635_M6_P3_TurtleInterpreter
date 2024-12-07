@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TurtleLexer {
+public class TurtleLexer implements TurtleLexerInt {
     private final String input;
     private int pos = 0;
 
@@ -14,6 +14,7 @@ public class TurtleLexer {
         input = new String(Files.readAllBytes(Paths.get(fileName)));
     }
 
+    @Override
     public List<String> tokenize() {
         List<String> tokens = new ArrayList<>();
         while (pos < input.length()) {

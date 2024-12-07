@@ -28,20 +28,22 @@ public class TurtleInterpreter {
     private void forward(int distance) {
         x += distance * Math.cos(Math.toRadians(heading));
         y += distance * Math.sin(Math.toRadians(heading));
-        System.out.println("Moved forward to (" + x + ", " + y + ")");
+        System.out.println("Moved forward " + distance + " to (" + x + ", " + y + ")");
     }
 
     private void backward(int distance) {
-        forward(-distance);
+        x -= distance * Math.cos(Math.toRadians(heading));
+        y -= distance * Math.sin(Math.toRadians(heading));
+        System.out.println("Moved backward " + distance + " to (" + x + ", " + y + ")");
     }
 
     private void turnRight(int degrees) {
         heading = (heading + degrees) % 360;
-        System.out.println("Turned right to " + heading + " degrees");
+        System.out.println("Turned right " + degrees + " degrees to " + heading);
     }
 
     private void turnLeft(int degrees) {
         heading = (heading - degrees + 360) % 360;
-        System.out.println("Turned left to " + heading + " degrees");
+        System.out.println("Turned left " + degrees + " degrees to " + heading);
     }
 }
