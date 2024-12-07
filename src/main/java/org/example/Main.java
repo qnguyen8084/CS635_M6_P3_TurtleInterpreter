@@ -19,6 +19,7 @@ public class Main {
 
         System.out.println("This is the contents of the AST formed by the parser");
         System.out.println(program.toStringTree(parser));
+
         TurtleMementoVisitor interpreter = new TurtleMementoVisitor();
         TurtleDistanceVisitor distanceVisitor = new TurtleDistanceVisitor();
 
