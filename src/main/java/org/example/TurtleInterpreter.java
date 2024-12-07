@@ -17,9 +17,10 @@ public class TurtleInterpreter extends TurtleBaseVisitor<Void> {
         return Math.hypot(x, y);
     }
 
+
+
     @Override
     public Void visitTurtle(TurtleParser.TurtleContext ctx) {
-        System.out.println("Turtle");
         x = Integer.parseInt(ctx.INT(0).getText());
         y = Integer.parseInt(ctx.INT(1).getText());
         heading = Integer.parseInt(ctx.INT(2).getText());
@@ -32,12 +33,6 @@ public class TurtleInterpreter extends TurtleBaseVisitor<Void> {
         int distance = Integer.parseInt(ctx.INT().getText());
         x += (int) (distance * Math.cos(Math.toRadians(heading)));
         y += (int) (distance * Math.sin(Math.toRadians(heading)));
-//        switch (heading) {
-//            case 0: x += distance; break;
-//            case 90: y += distance; break;
-//            case 180: x -= distance; break;
-//            case 270: y -= distance; break;
-//        }
         System.out.println("Forward " + distance + " to (" + x + ", " + y + ")");
         mementos.add(new TurtleMemento(x, y, heading));
         return null;
@@ -48,12 +43,6 @@ public class TurtleInterpreter extends TurtleBaseVisitor<Void> {
         int distance = Integer.parseInt(ctx.INT().getText());
         x -= (int) (distance * Math.cos(Math.toRadians(heading)));
         y -= (int) (distance * Math.sin(Math.toRadians(heading)));
-//        switch (heading) {
-//            case 0: x -= distance; break;
-//            case 90: y -= distance; break;
-//            case 180: x += distance; break;
-//            case 270: y += distance; break;
-//        }
         System.out.println("Backward " + distance + " to (" + x + ", " + y + ")");
         mementos.add(new TurtleMemento(x, y, heading));
         return null;
@@ -92,7 +81,9 @@ public class TurtleInterpreter extends TurtleBaseVisitor<Void> {
         System.out.println("Set heading to " + heading);
         mementos.add(new TurtleMemento(x, y, heading));
         return null;
-    }    public List<TurtleMemento> getMementos() {
+    }
+
+    public List<TurtleMemento> getMementos() {
         return mementos;
     }
 }

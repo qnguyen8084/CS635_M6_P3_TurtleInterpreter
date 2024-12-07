@@ -10,10 +10,10 @@ public class TurtleInterpreterDistance extends TurtleBaseVisitor<Void> {
         return totalDistance;
     }
 
-    @Override
-    public Void visitTurtle(TurtleParser.TurtleContext ctx) {
-        return null;
-    }
+//    @Override
+//    public Void visitTurtle(TurtleParser.TurtleContext ctx) {
+//        return null;
+//    }
 
     @Override
     public Void visitForward(TurtleParser.ForwardContext ctx) {
@@ -29,16 +29,16 @@ public class TurtleInterpreterDistance extends TurtleBaseVisitor<Void> {
         return null;
     }
 
-    @Override
-    public Void visitLeft(TurtleParser.LeftContext ctx) {
-        return null;
-    }
-
-    @Override
-    public Void visitRight(TurtleParser.RightContext ctx) {
-        return null;
-    }
-
+//    @Override
+//    public Void visitLeft(TurtleParser.LeftContext ctx) {
+//        return null;
+//    }
+//
+//    @Override
+//    public Void visitRight(TurtleParser.RightContext ctx) {
+//        return null;
+//    }
+//
     @Override
     public Void visitGoto(TurtleParser.GotoContext ctx) {
         return null;
