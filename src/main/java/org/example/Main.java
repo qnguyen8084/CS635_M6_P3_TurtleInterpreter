@@ -29,7 +29,6 @@ public class Main {
         }
 
         interpreterDistance.visit(program);
-        System.out.println(program.toStringTree(parser));
         System.out.println("Total distance traveled: " + interpreterDistance.getTotalDistance());
         System.out.println("Net distance traveled: " + interpreter.getNetDistance());
     }

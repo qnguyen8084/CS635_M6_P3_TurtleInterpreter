@@ -18,14 +18,14 @@ public class TurtleInterpreterDistance extends TurtleBaseVisitor<Void> {
     @Override
     public Void visitForward(TurtleParser.ForwardContext ctx) {
         totalDistance += Integer.parseInt(ctx.INT().getText());
-        System.out.println("Total distance: " + totalDistance);
+//        System.out.println("Total distance: " + totalDistance);
         return null;
     }
 
     @Override
     public Void visitBackward(TurtleParser.BackwardContext ctx) {
         totalDistance += Integer.parseInt(ctx.INT().getText());
-        System.out.println("Total distance: " + totalDistance);
+//        System.out.println("Total distance: " + totalDistance);
         return null;
     }
 
