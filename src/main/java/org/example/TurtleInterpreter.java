@@ -3,10 +3,14 @@ package org.example;
 import org.example.generated.TurtleBaseVisitor;
 import org.example.generated.TurtleParser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TurtleInterpreter extends TurtleBaseVisitor<Void> {
     private int x = 0;
     private int y = 0;
     private int direction = 0; // 0: up, 90: right, 180: down, 270: left
+    private List<TurtleMemento> mementos = new ArrayList<>();
 
     @Override
     public Void visitForward(TurtleParser.ForwardContext ctx) {
@@ -18,6 +22,7 @@ public class TurtleInterpreter extends TurtleBaseVisitor<Void> {
             case 270: x -= distance; break;
         }
         System.out.println("Forward " + distance + " to (" + x + ", " + y + ")");
+        mementos.add(new TurtleMemento(x, y, direction));
         return null;
     }
 
@@ -31,6 +36,7 @@ public class TurtleInterpreter extends TurtleBaseVisitor<Void> {
             case 270: x += distance; break;
         }
         System.out.println("Backward " + distance + " to (" + x + ", " + y + ")");
+        mementos.add(new TurtleMemento(x, y, direction));
         return null;
     }
 
@@ -39,6 +45,7 @@ public class TurtleInterpreter extends TurtleBaseVisitor<Void> {
         int degrees = Integer.parseInt(ctx.INT().getText());
         direction = (direction - degrees + 360) % 360;
         System.out.println("Left " + degrees + " degrees to " + direction);
+        mementos.add(new TurtleMemento(x, y, direction));
         return null;
     }
 
@@ -47,6 +54,7 @@ public class TurtleInterpreter extends TurtleBaseVisitor<Void> {
         int degrees = Integer.parseInt(ctx.INT().getText());
         direction = (direction + degrees) % 360;
         System.out.println("Right " + degrees + " degrees to " + direction);
+        mementos.add(new TurtleMemento(x, y, direction));
         return null;
     }
 
@@ -55,6 +63,7 @@ public class TurtleInterpreter extends TurtleBaseVisitor<Void> {
         x = Integer.parseInt(ctx.INT(0).getText());
         y = Integer.parseInt(ctx.INT(1).getText());
         System.out.println("Goto (" + x + ", " + y + ")");
+        mementos.add(new TurtleMemento(x, y, direction));
         return null;
     }
 
@@ -62,6 +71,9 @@ public class TurtleInterpreter extends TurtleBaseVisitor<Void> {
     public Void visitSetHeading(TurtleParser.SetHeadingContext ctx) {
         direction = Integer.parseInt(ctx.INT().getText());
         System.out.println("Set heading to " + direction);
+        mementos.add(new TurtleMemento(x, y, direction));
         return null;
+    }    public List<TurtleMemento> getMementos() {
+        return mementos;
     }
 }

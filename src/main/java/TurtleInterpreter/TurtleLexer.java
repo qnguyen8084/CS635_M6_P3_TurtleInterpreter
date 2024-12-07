@@ -6,14 +6,20 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+// This it the lexer class that reads the input file or turtle program and tokenizes it
 public class TurtleLexer implements TurtleLexerInt {
     private final String input;
     private int pos = 0;
 
+    // Constructor that reads the input file
     public TurtleLexer(String fileName) throws IOException {
         input = new String(Files.readAllBytes(Paths.get(fileName)));
     }
 
+    // Tokenizes the input file. It reads the input file character by character and tokenizes it
+    // based on the characters it reads. It returns a list of tokens.
+    // If first character is a letter, it reads the command and adds it to the list of tokens.
+    // If first character is a digit, it reads the number and adds it to the list of tokens.
     @Override
     public List<String> tokenize() {
         List<String> tokens = new ArrayList<>();
@@ -30,6 +36,7 @@ public class TurtleLexer implements TurtleLexerInt {
         return tokens;
     }
 
+    // Reads the number from the input file
     private String readNumber() {
         StringBuilder number = new StringBuilder();
         while (pos < input.length() && Character.isDigit(input.charAt(pos))) {
@@ -38,6 +45,7 @@ public class TurtleLexer implements TurtleLexerInt {
         return number.toString();
     }
 
+    // Reads the command from the input file
     private String readCommand() {
         StringBuilder command = new StringBuilder();
         while (pos < input.length() && Character.isLetter(input.charAt(pos))) {

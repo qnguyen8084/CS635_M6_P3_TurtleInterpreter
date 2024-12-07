@@ -10,19 +10,22 @@ public class Main {
         TurtleLexerInt lexer = new TurtleLexer(fileName);
         List<String> tokens = lexer.tokenize();
         TurtleParser parser = new TurtleParser(tokens);
-        List<ASTNode> commands = parser.parse();
+        List<ASTNode> program = parser.parse();
         Turtle turtle = new Turtle();
         TurtleInterpreter interpreter = new TurtleInterpreter(turtle);
         List<TurtleMemento> mementos = new ArrayList<>();
         TurtleDistanceVisitor turtleDistance = new TurtleDistanceVisitor();
-        for (ASTNode command : commands) {
+
+        for (ASTNode command : program) {
             TurtleMemento memento = command.accept(interpreter);
             mementos.add(memento);
             command.accept(turtleDistance);
         }
+
         for (TurtleMemento memento : mementos) {
-            System.out.println("Memento - X: " + memento.getX() + ", Y: " + memento.getY() + ", Heading: " + memento.getHeading());
+            System.out.println("Memento - X: " + memento.x() + ", Y: " + memento.y() + ", Heading: " + memento.heading());
         }
+
         System.out.println("Total distance traveled: " + turtleDistance.getTotalDistance());
     }
 }

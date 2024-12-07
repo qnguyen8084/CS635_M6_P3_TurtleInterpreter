@@ -1,11 +1,6 @@
 package TurtleInterpreter;
 
-public class TurnRightNode implements ASTNode {
-    public final int value;
-
-    public TurnRightNode(int value) {
-        this.value = value;
-    }
+public record TurnRightNode(int value) implements ASTNode {
 
     @Override
     public <T> T accept(ASTVisitor<T> visitor) {

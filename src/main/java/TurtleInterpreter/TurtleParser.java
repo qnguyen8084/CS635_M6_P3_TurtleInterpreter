@@ -12,25 +12,25 @@ public class TurtleParser {
     }
 
     public List<ASTNode> parse() {
-        List<ASTNode> commands = new ArrayList<>();
+        List<ASTNode> statementTree = new ArrayList<>();
         while (pos < tokens.size()) {
             String command = tokens.get(pos++);
             int value = Integer.parseInt(tokens.get(pos++));
             switch (command) {
                 case "fd":
-                    commands.add(new ForwardNode(value));
+                    statementTree.add(new ForwardNode(value));
                     break;
                 case "bk":
-                    commands.add(new BackwardNode(value));
+                    statementTree.add(new BackwardNode(value));
                     break;
                 case "tr":
-                    commands.add(new TurnRightNode(value));
+                    statementTree.add(new TurnRightNode(value));
                     break;
                 case "tl":
-                    commands.add(new TurnLeftNode(value));
+                    statementTree.add(new TurnLeftNode(value));
                     break;
             }
         }
-        return commands;
+        return statementTree;
     }
 }

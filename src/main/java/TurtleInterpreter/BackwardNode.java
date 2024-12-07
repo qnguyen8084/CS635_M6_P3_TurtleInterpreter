@@ -1,11 +1,6 @@
 package TurtleInterpreter;
 
-public class BackwardNode implements ASTNode {
-    public final int value;
-
-    public BackwardNode(int value) {
-        this.value = value;
-    }
+public record BackwardNode(int value) implements ASTNode {
 
     @Override
     public <T> T accept(ASTVisitor<T> visitor) {

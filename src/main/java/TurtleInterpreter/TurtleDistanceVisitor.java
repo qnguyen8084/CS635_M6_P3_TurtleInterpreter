@@ -9,13 +9,13 @@ public class TurtleDistanceVisitor implements ASTVisitor<Void> {
 
     @Override
     public Void visit(ForwardNode node) {
-        totalDistance += node.value;
+        totalDistance += node.value();
         return null;
     }
 
     @Override
     public Void visit(BackwardNode node) {
-        totalDistance += node.value;
+        totalDistance += node.value();
         return null;
     }
 
