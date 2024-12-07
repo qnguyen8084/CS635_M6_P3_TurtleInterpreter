@@ -33,25 +33,8 @@ public class Main {
         mementoVisitor.visit(program);
         distanceVisitor.visit(program);
 
-        System.out.println("This is the commands that the turtle executed");
         List<String> commands = commandVisitor.getCommands();
-        for (String command : commands) {
-            System.out.println(command);
-        }
-
-        System.out.println("This is the mementos of the turtle's state after each command");
         List<TurtleMemento> mementos = mementoVisitor.getMementos();
-        for (TurtleMemento memento : mementos) {
-            System.out.println("Memento - ("+ memento.x() + "," + memento.y() + "," + memento.heading() + ")");
-        }
-
-        System.out.println("This is the composite list of commands and mementos:");
-        for (int i = 0; i < commands.size(); i++) {
-            String command = commands.get(i);
-            TurtleMemento memento = mementos.get(i);
-            System.out.println("Command: " + command + " | Memento - (" + memento.x() + "," + memento.y() + "," + memento.heading() + ")");
-        }
-
         List<Double> distances = distanceVisitor.getTotalDistances();
 
         System.out.println("This is the composite list of commands, mementos, and distances:");
