@@ -9,8 +9,22 @@ import java.util.List;
 public class TurtleInterpreter extends TurtleBaseVisitor<Void> {
     private int x = 0;
     private int y = 0;
-    private int direction = 0; // 0: up, 90: right, 180: down, 270: left
-    private List<TurtleMemento> mementos = new ArrayList<>();
+    private int direction = 0; // 0: north, 90: east, 180: south, 270: west
+    private final List<TurtleMemento> mementos = new ArrayList<>();
+
+    public double getNetDistance() {
+        return Math.hypot(x, y);
+    }
+
+    @Override
+    public Void visitTurtle(TurtleParser.TurtleContext ctx) {
+        System.out.println("Turtle");
+        x = Integer.parseInt(ctx.INT(0).getText());
+        y = Integer.parseInt(ctx.INT(1).getText());
+        direction = Integer.parseInt(ctx.INT(2).getText());
+        mementos.add(new TurtleMemento(x, y, direction));
+        return null;
+    }
 
     @Override
     public Void visitForward(TurtleParser.ForwardContext ctx) {

@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.example.generated.TurtleLexer;
 import org.example.generated.TurtleParser;
 
@@ -17,7 +18,7 @@ public class Main {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         TurtleParser parser = new TurtleParser(tokens);
         TurtleParser.ProgramContext program = parser.program();
-//        System.out.println(program.toStringTree(parser));
+        System.out.println(program.toStringTree(parser));
         TurtleInterpreter interpreter = new TurtleInterpreter();
         TurtleInterpreterDistance interpreterDistance = new TurtleInterpreterDistance();
         interpreter.visit(program);
@@ -28,6 +29,8 @@ public class Main {
         }
 
         interpreterDistance.visit(program);
-
+        System.out.println(program.toStringTree(parser));
+        System.out.println("Total distance traveled: " + interpreterDistance.getTotalDistance());
+        System.out.println("Net distance traveled: " + interpreter.getNetDistance());
     }
 }

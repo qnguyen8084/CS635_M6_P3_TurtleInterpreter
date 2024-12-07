@@ -4,7 +4,16 @@ import org.example.generated.TurtleBaseVisitor;
 import org.example.generated.TurtleParser;
 
 public class TurtleInterpreterDistance extends TurtleBaseVisitor<Void> {
-    private int totalDistance = 0;
+    private double totalDistance = 0;
+
+    public double getTotalDistance() {
+        return totalDistance;
+    }
+
+    @Override
+    public Void visitTurtle(TurtleParser.TurtleContext ctx) {
+        return null;
+    }
 
     @Override
     public Void visitForward(TurtleParser.ForwardContext ctx) {
