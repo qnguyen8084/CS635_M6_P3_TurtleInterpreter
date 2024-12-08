@@ -1,3 +1,12 @@
+/*
+ * Quy Nguyen
+ * Dr. Magda Tsintsadze
+ * CS635
+ * M6 P3 Turtle Interpreter
+ * December 7, 2024
+ * TurtleMementoVisitor.java
+ */
+
 package TurtleInterpreterEnhanced;
 
 import TurtleInterpreterEnhanced.generated.TurtleBaseVisitor;
@@ -6,6 +15,9 @@ import TurtleInterpreterEnhanced.generated.TurtleParser;
 import java.util.ArrayList;
 import java.util.List;
 
+// This is the visitor class that traverses the AST genereated by the parser and creates a list of mementos
+// of the turtle's state after each command is executed. It also includes the method to calculate the net
+// distance of the turtles final position from the starting position.
 public class TurtleMementoVisitor extends TurtleBaseVisitor<Void> {
     private int x = 0;
     private int y = 0;

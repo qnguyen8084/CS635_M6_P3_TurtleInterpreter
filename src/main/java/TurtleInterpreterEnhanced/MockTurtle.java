@@ -1,5 +1,15 @@
+/*
+ * Quy Nguyen
+ * Dr. Magda Tsintsadze
+ * CS635
+ * M6 P3 Turtle Interpreter
+ * December 7, 2024
+ * MockTurtle.java
+ */
+
 package TurtleInterpreterEnhanced;
 
+// This is a mock turtle class that implements the turtle interface. It is used for testing purposes.
 public class MockTurtle implements Turtle {
     private int x;
     private int y;

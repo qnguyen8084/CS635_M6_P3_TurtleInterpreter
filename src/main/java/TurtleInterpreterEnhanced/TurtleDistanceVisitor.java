@@ -1,3 +1,12 @@
+/*
+ * Quy Nguyen
+ * Dr. Magda Tsintsadze
+ * CS635
+ * M6 P3 Turtle Interpreter
+ * December 7, 2024
+ * TurtleDistanceVisitor.java
+ */
+
 package TurtleInterpreterEnhanced;
 
 import TurtleInterpreterEnhanced.generated.TurtleBaseVisitor;
@@ -5,6 +14,9 @@ import TurtleInterpreterEnhanced.generated.TurtleParser;
 
 import java.util.ArrayList;
 import java.util.List;
+
+// This is the visitor class that traverses the ast. He has the functionality of storing the total distance
+// It also has uses an array list to store the cumulative distance for each step in the turtle program.
 
 public class TurtleDistanceVisitor extends TurtleBaseVisitor<Void> {
     private double totalDistance = 0;

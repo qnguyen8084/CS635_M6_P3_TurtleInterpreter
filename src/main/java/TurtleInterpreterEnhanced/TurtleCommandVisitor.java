@@ -1,3 +1,12 @@
+/*
+ * Quy Nguyen
+ * Dr. Magda Tsintsadze
+ * CS635
+ * M6 P3 Turtle Interpreter
+ * December 7, 2024
+ * TurtleCommandVisitor.java
+ */
+
 package TurtleInterpreterEnhanced;
 
 import TurtleInterpreterEnhanced.generated.TurtleBaseVisitor;
@@ -6,6 +15,8 @@ import TurtleInterpreterEnhanced.generated.TurtleParser;
 import java.util.ArrayList;
 import java.util.List;
 
+// This is the visitor class that traverses the ast. He has the functionality of storing commands as
+// well as executing a turtle program.
 public class TurtleCommandVisitor extends TurtleBaseVisitor<Void> {
     private final Turtle turtle;
     private final List<String> commands = new ArrayList<>();

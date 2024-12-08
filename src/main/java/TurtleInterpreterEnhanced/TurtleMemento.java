@@ -1,5 +1,16 @@
+/*
+ * Quy Nguyen
+ * Dr. Magda Tsintsadze
+ * CS635
+ * M6 P3 Turtle Interpreter
+ * December 7, 2024
+ * TurtleMemento.java
+ */
+
 package TurtleInterpreterEnhanced;
 
+
+// This is a memento class for the turtle. It is used to store the state of a turtle after a command is executed.
 public class TurtleMemento {
     private final int x;
     private final int y;
