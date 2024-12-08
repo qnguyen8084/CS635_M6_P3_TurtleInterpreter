@@ -1,3 +1,12 @@
+/*
+ * Quy Nguyen
+ * Dr. Magda Tsintsadze
+ * CS635
+ * M6 P3 Turtle Interpreter
+ * December 7, 2024
+ * TurtleInterpreterEnhanced.java
+ */
+
 package TurtleInterpreterEnhanced;
 
 
@@ -9,7 +18,10 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import TurtleInterpreterEnhanced.generated.TurtleLexer;
 import TurtleInterpreterEnhanced.generated.TurtleParser;
 
-
+// This is the main class that is used to run the turtle program file. It uses the lexer and parser to create an AST
+// and then uses the visitor classes to traverse the AST and execute the turtle program.
+// Once the main function completes it displays the total distance traversed by the turtle as well as its net
+// distance from the starting point.
 public class TurtleInterpreterEnhanced {
     public static void main(String[] args) throws IOException {
         String fileName;
