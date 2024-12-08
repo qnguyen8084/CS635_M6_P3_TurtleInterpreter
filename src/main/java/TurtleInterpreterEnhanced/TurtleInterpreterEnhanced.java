@@ -9,7 +9,8 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import TurtleInterpreterEnhanced.generated.TurtleLexer;
 import TurtleInterpreterEnhanced.generated.TurtleParser;
 
-public class Main {
+
+public class TurtleInterpreterEnhanced {
     public static void main(String[] args) throws IOException {
         String fileName;
         if (args.length == 0) {
@@ -25,8 +26,11 @@ public class Main {
         System.out.println("This is the contents of the AST formed by the parser");
         System.out.println(program.toStringTree(parser));
 
-        TurtleCommandVisitor commandVisitor = new TurtleCommandVisitor();
-        TurtleMementoVisitor mementoVisitor = new TurtleMementoVisitor();
+        Turtle turtle = new MockTurtle(0, 0, 0); {
+        }
+
+        TurtleCommandVisitor commandVisitor = new TurtleCommandVisitor(turtle);
+        TurtleMementoVisitor mementoVisitor = new TurtleMementoVisitor(turtle);
         TurtleDistanceVisitor distanceVisitor = new TurtleDistanceVisitor();
 
         commandVisitor.visit(program);
@@ -42,8 +46,8 @@ public class Main {
             String command = commands.get(i);
             TurtleMemento memento = mementos.get(i);
             double distance = distances.get(i);
-            System.out.println("Command: " + command + " | Memento - (" + memento.x() + "," + memento.y() + "," +
-                    memento.heading() + ") | Distance: " + distance);
+            System.out.println("Command: " + command + " | Memento - (" + memento.getX() + "," + memento.getY() + "," +
+                    memento.getHeading() + ") | Distance: " + distance);
         }
 
         System.out.println("This is the total and net distance traveled by the turtle");
