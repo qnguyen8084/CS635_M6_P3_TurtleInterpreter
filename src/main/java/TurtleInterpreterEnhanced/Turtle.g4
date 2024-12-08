@@ -11,7 +11,7 @@ right: 'right' INT;
 goto: 'goto' INT INT;
 setHeading: 'setHeading' INT;
 
-INT: [0-9]+;
+INT: '-'?[0-9]+;
 WS: [ \t\r\n]+ -> skip;
 LINE_COMMENT
     : '//' ~[\r\n]* -> skip
