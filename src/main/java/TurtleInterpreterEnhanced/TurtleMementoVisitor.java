@@ -33,6 +33,7 @@ public class TurtleMementoVisitor extends TurtleBaseVisitor<Void> {
         return Math.hypot(x, y);
     }
 
+    // Visits the turtle AST node and sets the turtle's x, y, and heading to the values in the AST node
     @Override
     public Void visitTurtle(TurtleParser.TurtleContext ctx) {
         try {
@@ -48,6 +49,7 @@ public class TurtleMementoVisitor extends TurtleBaseVisitor<Void> {
         return visitChildren(ctx);
     }
 
+    // Visits the forward AST node and moves the turtle forward by the distance in the AST node
     @Override
     public Void visitForward(TurtleParser.ForwardContext ctx) {
         try {
@@ -62,6 +64,7 @@ public class TurtleMementoVisitor extends TurtleBaseVisitor<Void> {
         return visitChildren(ctx);
     }
 
+    // Visits the backward AST node and moves the turtle backward by the distance in the AST node
     @Override
     public Void visitBackward(TurtleParser.BackwardContext ctx) {
         try {
@@ -76,6 +79,7 @@ public class TurtleMementoVisitor extends TurtleBaseVisitor<Void> {
         return visitChildren(ctx);
     }
 
+    // Visits the left AST node and turns the turtle left by the degrees in the AST node
     @Override
     public Void visitLeft(TurtleParser.LeftContext ctx) {
         try {
@@ -90,6 +94,7 @@ public class TurtleMementoVisitor extends TurtleBaseVisitor<Void> {
         return visitChildren(ctx);
     }
 
+    // Visits the right AST node and turns the turtle right by the degrees in the AST node
     @Override
     public Void visitRight(TurtleParser.RightContext ctx) {
         try {
@@ -104,6 +109,7 @@ public class TurtleMementoVisitor extends TurtleBaseVisitor<Void> {
         return visitChildren(ctx);
     }
 
+    // Visits the goto AST node and moves the turtle to the x, y coordinates in the AST node
     @Override
     public Void visitGoto(TurtleParser.GotoContext ctx) {
         try {
@@ -117,6 +123,7 @@ public class TurtleMementoVisitor extends TurtleBaseVisitor<Void> {
         return visitChildren(ctx);
     }
 
+    // Visits the setheading AST node and sets the turtle's heading to the degrees in the AST node
     @Override
     public Void visitSetHeading(TurtleParser.SetHeadingContext ctx) {
         try {
@@ -130,6 +137,7 @@ public class TurtleMementoVisitor extends TurtleBaseVisitor<Void> {
         return visitChildren(ctx);
     }
 
+    // Returns the list of mementos
     public List<TurtleMemento> getMementos() {
         return new ArrayList<>(mementos);
     }

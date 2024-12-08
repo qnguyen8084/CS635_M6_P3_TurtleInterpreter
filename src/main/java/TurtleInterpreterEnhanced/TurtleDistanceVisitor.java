@@ -24,14 +24,17 @@ public class TurtleDistanceVisitor extends TurtleBaseVisitor<Void> {
     private int y = 0;
     private final List<Double> totalDistances = new ArrayList<>();
 
+    // Returns the total distance traversed by the turtle
     public double getTotalDistance() {
         return totalDistance;
     }
 
+    // Returns the list of cumulative distances for each step in the turtle program
     public List<Double> getTotalDistances() {
         return new ArrayList<>(totalDistances);
     }
 
+    // Visits the turtle Forward AST node and adds the distance to the total distance
     @Override
     public Void visitForward(TurtleParser.ForwardContext ctx) {
         int distance = Integer.parseInt(ctx.INT().getText());
@@ -40,6 +43,7 @@ public class TurtleDistanceVisitor extends TurtleBaseVisitor<Void> {
         return null;
     }
 
+    // Visits the turtle Backward AST node and adds the distance to the total distance
     @Override
     public Void visitBackward(TurtleParser.BackwardContext ctx) {
         int distance = Integer.parseInt(ctx.INT().getText());
@@ -48,6 +52,7 @@ public class TurtleDistanceVisitor extends TurtleBaseVisitor<Void> {
         return null;
     }
 
+    // Visits the turtle Goto AST node and adds the distance to the total distance
     @Override
     public Void visitGoto(TurtleParser.GotoContext ctx) {
         int newX = Integer.parseInt(ctx.INT(0).getText());
@@ -59,6 +64,8 @@ public class TurtleDistanceVisitor extends TurtleBaseVisitor<Void> {
         return null;
     }
 
+    // These four following methods effectively add 0 to the total distance, but is needed to be able to correlate
+    // the distances along with the commands.
     public Void visitSetHeading(TurtleParser.SetHeadingContext ctx) {
         totalDistances.add(totalDistance);
         return null;
