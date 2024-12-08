@@ -100,6 +100,7 @@ public class TurtleMementoVisitor extends TurtleBaseVisitor<Void> {
         try {
             int degrees = Integer.parseInt(ctx.INT().getText());
             turtle.right(degrees);
+            // Mathematical trick to keep the heading between 0 and 359
             heading = (heading - degrees + 360) % 360;
             if (heading < 0) heading += 360;
             mementos.add(new TurtleMemento(x, y, heading));
@@ -128,6 +129,7 @@ public class TurtleMementoVisitor extends TurtleBaseVisitor<Void> {
     public Void visitSetHeading(TurtleParser.SetHeadingContext ctx) {
         try {
             heading = Integer.parseInt(ctx.INT().getText());
+            // Mathematical trick to keep the heading between 0 and 359
             heading = (heading % 360 + 360) % 360;
             turtle.setHeading(heading);
             mementos.add(new TurtleMemento(x, y, heading));
